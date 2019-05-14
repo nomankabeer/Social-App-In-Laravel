@@ -1,26 +1,3 @@
-<style>
-
-   /* .profile-photo {
-        width:130px;
-        height:auto;
-        !*border-radius: 100%;*!
-    }
-
-    .flex-menu {
-        display:flex;
-    }
-    .listylenone{
-        list-style: none !important;
-    }
-
-    .flex-menu li:not(:last-child) {
-        margin-right:40px;
-    }
-    .smallfontsize{
-        color: grey;
-        font-size: 12px;
-    }*/
-</style>
 <div class="row m-b-r m-t-3">
     <div class="col-md-2 offset-md-1">
         <img src="https://mdbootstrap.com/images/avatars/img%20(1).jpg" alt="" class="profile-photo img-circle iemg-fluid">

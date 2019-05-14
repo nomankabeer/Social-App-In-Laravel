@@ -1,4 +1,3 @@
-<!-- Nav -->
 <nav id="nav">
     <ul class="links">
         <li class="active"><a href="/">This is Massively</a></li>
