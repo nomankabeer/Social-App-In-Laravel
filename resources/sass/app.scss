@@ -6,3 +6,34 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+
+.profile-photo {
+  width:130px;
+  height:auto;
+  /*border-radius: 100%;*/
+}
+
+.flex-menu {
+  display:flex;
+}
+.listylenone{
+  list-style: none !important;
+}
+
+.flex-menu li:not(:last-child) {
+  margin-right:40px;
+}
+.smallfontsize{
+  color: grey;
+  font-size: 12px;
+}
+
+
+.profile_image200{
+  height: 200px; width: 200px; border-radius: 100%;
+}
+.btnpadding30{
+  padding: 0px 40px;
+}
