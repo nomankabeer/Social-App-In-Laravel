@@ -1,35 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
+
+	@include('partials.header')
+	@include('partials.nav')
 	<!-- Main -->
+
+
 	<div id="main">
 
 		<!-- Featured Post -->
 		<article class="post featured">
 			<header class="major">
-				<span class="date">April 25, 2017</span>
-				<h2><a href="#">And this is a<br />
-						massive headline</a></h2>
-				<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-					facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-					amet nullam sed etiam veroeros.</p>
+				<span class="date">{{\Illuminate\Support\Carbon::today()}}</span>
+				<h2>Add Post</h2>
 			</header>
-			<a href="#" class="image main"><img src="{{asset('images/pic01.jpg')}}" alt="" /></a>
-			<ul class="actions special">
-				<li><a href="#" class="button large">Full Story</a></li>
-			</ul>
+				<section>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field">
+								<label for="name">Image</label>
+								<input required type="file" name="name" id="name" />
+							</div>
+							<div class="field">
+								<label for="title">Title</label>
+								<input required type="text" name="title" id="title" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea required name="message" id="message" rows="3"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><button type="submit" >Upload Post</button></li>
+						</ul>
+					</form>
+				</section>
 		</article>
 
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+				<a class="nav-link active" href="#">My Posts</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" href="#">All Posts</a>
+			</li>
+		</ul>
 		<!-- Posts -->
 		<section class="posts">
 			<article>
 				<header>
-					<span class="date">April 24, 2017</span>
-					<h2><a href="#">Sed magna<br />
-							ipsum faucibus</a></h2>
+					<span><img src="{{asset('images/pic02.jpg')}}" alt="" style="height: 70px; width: 70px; border-radius: 100%; " /> <br> <span class="date"> Noman Kabeer <br> April 24, 2017</span></span>
+					<h3><a href="#">Sed magna</a></h3>
 				</header>
 				<a href="#" class="image fit"><img src="{{asset('images/pic02.jpg')}}" alt="" /></a>
-				<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 				<ul class="actions special">
 					<li><a href="#" class="button">Full Story</a></li>
 				</ul>
