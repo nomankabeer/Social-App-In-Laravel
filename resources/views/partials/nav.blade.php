@@ -6,6 +6,7 @@
         <li><a href="{{url('ele')}}">Elements Reference</a></li>
         <li><a href="{{url('profile')}}">Profile</a></li>
         <li><a href="{{url('all/users')}}">All Users</a></li>
+        <li><a href="{{url('all/users')}}">Logout</a></li>
     </ul>
     <ul class="icons">
         <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>

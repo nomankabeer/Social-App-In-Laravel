@@ -1,9 +1,9 @@
 <style>
 
-    .profile-photo {
+   /* .profile-photo {
         width:130px;
         height:auto;
-        /*border-radius: 100%;*/
+        !*border-radius: 100%;*!
     }
 
     .flex-menu {
@@ -16,6 +16,10 @@
     .flex-menu li:not(:last-child) {
         margin-right:40px;
     }
+    .smallfontsize{
+        color: grey;
+        font-size: 12px;
+    }*/
 </style>
 <div class="row m-b-r m-t-3">
     <div class="col-md-2 offset-md-1">
@@ -23,7 +27,7 @@
     </div>
     <div class="col-md-9 p-t-2 text-center">
         <h2 class="h2-responsive">@janedoe<button type="button" class="btn btn-info-outline waves-effect">Follow</button></h2>
-        <h4 class="h2-responsive"> Jane Doe</h4>
+        <h4 class="h2-responsive"> Jane Doe <small class="smallfontsize badge badge-info text-white">follows you</small> </h4>
 
         <ul class="flex-menu listylenone">
             <li><strong>41</strong> posts</li>
