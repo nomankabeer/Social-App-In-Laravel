@@ -15,7 +15,8 @@ class Post extends Migration
     {
         Schema::create('post', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('post')->nullable();
+            $table->string('title')->nullable();
+            $table->string('message')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

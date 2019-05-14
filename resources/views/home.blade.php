@@ -16,11 +16,12 @@
 				<h2>Add Post</h2>
 			</header>
 				<section>
-					<form method="post" action="#">
+					<form method="post" action="{{route('store.post')}}" enctype="multipart/form-data">
+						@csrf
 						<div class="fields">
 							<div class="field">
 								<label for="name">Image</label>
-								<input required type="file" name="name" id="name" />
+								<input required type="file" name="image" id="name" />
 							</div>
 							<div class="field">
 								<label for="title">Title</label>
@@ -48,16 +49,18 @@
 		</ul>
 		<!-- Posts -->
 		<section class="posts">
+			@foreach($posts as $post)
 			<article>
 				<header>
-					<span><img src="{{asset('images/pic02.jpg')}}" alt="" style="height: 70px; width: 70px; border-radius: 100%; " /> <br> <span class="date"> Noman Kabeer <br> April 24, 2017</span></span>
-					<h3><a href="#">Sed magna</a></h3>
+					<span><img src="{{asset('images/pic02.jpg')}}" alt="" style="height: 70px; width: 70px; border-radius: 100%; " /> <br> <span class="date"> Noman Kabeer <br> {{$post->created_at}}</span></span>
+					<h3><a href="#">{{$post->title}}</a></h3>
 				</header>
-				<a href="#" class="image fit"><img src="{{asset('images/pic02.jpg')}}" alt="" /></a>
+				<a href="#" class="image fit"><img src="{{asset('images/').'/'.$post->image}}" alt="" /></a>
 				<ul class="actions special">
 					<li><a href="#" class="button">Full Story</a></li>
 				</ul>
 			</article>
+			@endforeach
 			<article>
 				<header>
 					<span class="date">April 22, 2017</span>
