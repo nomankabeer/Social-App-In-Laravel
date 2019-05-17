@@ -18,6 +18,7 @@ class Post extends Migration
             $table->string('title')->nullable();
             $table->string('message')->nullable();
             $table->string('image')->nullable();
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }
