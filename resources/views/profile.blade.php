@@ -1,96 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    @include('partials.header')
-    @include('partials.nav')
+    @include('partials.header' , ['page' => 'profile'])
+    @include('partials.nav' , ['page' => 'profile'])
     <!-- Main -->
-
-
-
-
-
-
-
-
     <div id="main">
-
-        <!-- Featured Post -->
-
-        <!-- Posts -->
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{route('update.profile')}}">Update Profile</a>
+            </li>
+        </ul>
         <section class="posts">
-            <article>
-                <header>
-                    <span><img src="{{asset('images/pic02.jpg')}}" alt="" style="height: 70px; width: 70px; border-radius: 100%; " /> <br> <span class="date"> Noman Kabeer <br> April 24, 2017</span></span>
-                    <h3><a href="#">Sed magna</a></h3>
-                </header>
-                <a href="#" class="image fit"><img src="{{asset('images/pic02.jpg')}}" alt="" /></a>
-                <ul class="actions special">
-                    <li><a href="#" class="button">Full Story</a></li>
-                </ul>
-
-
-
-            </article>
-            <article>
-                <header>
-                    <span class="date">April 22, 2017</span>
-                    <h2><a href="#">Primis eget<br />
-                            imperdiet lorem</a></h2>
-                </header>
-                <a href="#" class="image fit"><img src="{{asset('images/pic03.jpg')}}" alt="" /></a>
-                <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-                <ul class="actions special">
-                    <li><a href="#" class="button">Full Story</a></li>
-                </ul>
-            </article>
-            <article>
-                <header>
-                    <span class="date">April 18, 2017</span>
-                    <h2><a href="#">Ante mattis<br />
-                            interdum dolor</a></h2>
-                </header>
-                <a href="#" class="image fit"><img src="{{asset('images/pic04.jpg')}}" alt="" /></a>
-                <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-                <ul class="actions special">
-                    <li><a href="#" class="button">Full Story</a></li>
-                </ul>
-            </article>
-            <article>
-                <header>
-                    <span class="date">April 14, 2017</span>
-                    <h2><a href="#">Tempus sed<br />
-                            nulla imperdiet</a></h2>
-                </header>
-                <a href="#" class="image fit"><img src="{{asset('images/pic05.jpg')}}" alt="" /></a>
-                <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-                <ul class="actions special">
-                    <li><a href="#" class="button">Full Story</a></li>
-                </ul>
-            </article>
-            <article>
-                <header>
-                    <span class="date">April 11, 2017</span>
-                    <h2><a href="#">Odio magna<br />
-                            sed consectetur</a></h2>
-                </header>
-                <a href="#" class="image fit"><img src="{{asset('images/pic06.jpg')}}" alt="" /></a>
-                <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-                <ul class="actions special">
-                    <li><a href="#" class="button">Full Story</a></li>
-                </ul>
-            </article>
-            <article>
-                <header>
-                    <span class="date">April 7, 2017</span>
-                    <h2><a href="#">Augue lorem<br />
-                            primis vestibulum</a></h2>
-                </header>
-                <a href="#" class="image fit"><img src="{{asset('images/pic07.jpg')}}" alt="" /></a>
-                <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-                <ul class="actions special">
-                    <li><a href="#" class="button">Full Story</a></li>
-                </ul>
-            </article>
+            @foreach(Auth::user()->getUserProfilePosts() as $post)
+                <article>
+                    <header>
+                        <span>
+                            <img src="{{asset('images/').'/'.$post->avatar}}" alt="" style="height: 70px; width: 70px; border-radius: 100%; " />
+                            <br>
+                            <span class="date"> {{$post->name}} <br> {{$post->created_at}}</span>
+                        </span>
+                        <h3><a href="#">{{$post->title}}</a></h3>
+                    </header>
+                    <a href="#" class="image fit"><img src="{{asset('images/').'/'.$post->image}}" alt="" /></a>
+                    <ul class="actions special">
+                        <li><a href="#" class="button">Full Story</a></li>
+                    </ul>
+                </article>
+            @endforeach
         </section>
 
         <!-- Footer -->
@@ -109,4 +45,6 @@
         </footer>
 
     </div>
+
+
 @endsection
