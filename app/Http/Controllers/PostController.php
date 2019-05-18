@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use App\Http\Controllers\Traits\UploadImage;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    use UploadImage;
     /**
      * Display a listing of the resource.
      *
@@ -16,21 +19,25 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::get();
-        return view('home' , compact('posts'));
+        return view('index' , compact('posts'));
     }
 
     public function store(Request $request)
     {
         $image = $request->file('image');
-        $name = time().$image->getClientOriginalExtension();
-        $image->move(public_path('/images') , $name);
+        $name = $this->uploadImage($image);
         $request = $request->all();
         Arr::forget($request , '_token');
         Arr::forget($request , 'image');
-        $add = Arr::add($request , 'image' , $name);
-        Post::create($add);
-        return redirect()->route('home');
+        $added_user_id = Arr::add( $request , 'user_id' , Auth::user()->id);
+        $added_image = Arr::add( $added_user_id, 'image' , $name);
+        Post::create($added_image);
+        return redirect()->route('index');
     }
+     public function postDetails($id){
+        $post = Post::where('id', $id)->first();
+        return view('post_detail' , compact('post'));
+     }
 
     /**
      * Display the specified resource.
