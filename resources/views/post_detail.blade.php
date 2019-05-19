@@ -10,174 +10,38 @@
 									<h1>{{$post->title}}</h1>
 								</header>
 								<div class="image main">
-									{{--<img src="images/pic01.jpg" alt="" />--}}
 									<img src="{{asset('images').'/'.$post->image}}" alt="" />
 								</div>
 								<p>{{$post->message}}</p>
-
-								<style>
-
-									.detailBox {
-										/*width:320px;*/
-										border:1px solid #bbb;
-										margin:50px;
-									}
-									.titleBox {
-										background-color:#fdfdfd;
-										padding:10px;
-									}
-									.titleBox label{
-										color:#444;
-										margin:0;
-										display:inline-block;
-									}
-
-									.commentBox {
-										padding:10px;
-										border-top:1px dotted #bbb;
-									}
-									.commentBox .form-group:first-child, .actionBox .form-group:first-child {
-										width:80%;
-									}
-									.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
-										width:18%;
-									}
-									.actionBox .form-group * {
-										width:100%;
-									}
-									.taskDescription {
-										margin-top:10px;
-									}
-									.commentList {
-										padding:0;
-										list-style:none;
-										max-height:500px;
-										overflow:auto;
-									}
-									.commentList li {
-										margin:0;
-										margin-top:10px;
-									}
-									.commentList li > div {
-										display:table-cell;
-									}
-									.commenterImage {
-										width:40px;
-										margin-right:5px;
-										height:100%;
-										float:left;
-									}
-									.commenterImage img {
-										width:100%;
-										border-radius:50%;
-									}
-									.commentText p {
-										margin:0;
-									}
-									.sub-text {
-										color:#aaa;
-										font-family:verdana;
-										font-size:11px;
-									}
-									.actionBox {
-										border-top:1px dotted #bbb;
-										padding:10px;
-									}
-									.width100{
-										width:100% !important;
-									}
-									.width50{
-										width:50% !important;
-									}
-									.displayflex{
-										display: flex !important;
-									}
-								</style>
-
-
-								<div class="detailBox">
+                                <div class="detailBox">
 									<div class="titleBox displayflex">
-										<button class=" width50 btn btn-default">Like This Post <span class="badge badge-success">20 Other likes</span></button>
-										<button class=" width50 btn btn-default">Dislike This Post <span class="badge badge-danger">20 Other DisLike</span></button>
+										<button class=" like_msg likeButton width50 btn btn-default">Like This Post <span class=" other_like_msg badge badge-success">20 Other likes</span></button>
+										<button class=" dislike_msg dislikeButton width50 btn btn-default">Dislike This Post <span class=" other_dislike_msg badge badge-danger">20 Other DisLike</span></button>
 									</div>
 									<div class="titleBox">
 										<label>Comment Box</label>
 									</div>
 									<div class="commentBox justify-content-center">
-										<form class="form-inline" role="form">
 											<div class="form-group">
-												<input class=" width100 form-control" type="text" placeholder="Your comments" />
+												<input class=" comment width100 form-control" type="text" placeholder="Your comments" />
 											</div>
 											<div class="form-group">
-												<button class=" width100 btn btn-default">Add</button>
+												<button class="addComment width100 btn btn-default">Add</button>
 											</div>
-										</form>
 									</div>
 									<div class="actionBox">
-										<ul class="commentList">
+										<ul class="myComments commentList">
+{{--
 											<li>
 												<div class="commenterImage">
 													<img src="http://lorempixel.com/50/50/people/9" />
 												</div>
 												<div class="commentText">
 													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
-
 												</div>
 											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://lorempixel.com/50/50/people/9" />
-												</div>
-												<div class="commentText">
-													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
+--}}
 
-												</div>
-											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://lorempixel.com/50/50/people/9" />
-												</div>
-												<div class="commentText">
-													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
-
-												</div>
-											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://lorempixel.com/50/50/people/9" />
-												</div>
-												<div class="commentText">
-													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
-
-												</div>
-											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://lorempixel.com/50/50/people/9" />
-												</div>
-												<div class="commentText">
-													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
-
-												</div>
-											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://lorempixel.com/50/50/people/9" />
-												</div>
-												<div class="commentText">
-													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
-
-												</div>
-											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://lorempixel.com/50/50/people/9" />
-												</div>
-												<div class="commentText">
-													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
-
-												</div>
-											</li>
 											{{--<li>
 												<button class="width100">Load Previous Comments</button>
 											</li>--}}
@@ -189,10 +53,70 @@
 					</div>
 
 @endsection
-@section('before-scripts')
+@section('after-scripts')
 	<script>
 		$(document).ready(function(){
-		    console.log('eeeeeeee');
+            getComments();
+		    //Click on like post button
+		    $('.likeButton').click(function(){
+                callAjaxToLikeOrDislikePost("{{$post->id}}" , 1);
+			});
+		    //click on dislike post button
+            $('.dislikeButton').click(function(){
+                callAjaxToLikeOrDislikePost("{{$post->id}}" , 0);
+            });
+            //Add Comment
+			$('.addComment').click(function(){
+			    var comment = $('.comment').val();
+			    if(comment != null && comment != ''){
+			        addComment("{{$post->id}}" , comment);
+				}
+			});
+
 		});
+		function callAjaxToLikeOrDislikePost(id , value) {
+            $.ajax({
+                type: "POST",
+                url: "{{route('like_dislike_post')}}",
+                data: { _token: "{{ csrf_token() }}", post_id: id , value: value},
+                success: function(data , status){
+                    $('.like_msg').html(data[0] +'<span class=" other_like_msg badge badge-success">'+ data[1] +'</span>');
+                    $('.dislike_msg').html(data[2] +'<span class=" other_like_msg badge badge-danger">'+ data[3] +'</span>');
+                    // console.log(data , status , 'data status');
+                },
+            });
+        }
+        function getComments(){
+		    $.ajax({
+				type: "get",
+				url: "{{route('get_comment' , $post->id)}}",
+				success: function(data , status){
+				    var asset = "{{asset('images').'/'}}";
+                    $('.comment').val('');
+                    $('.myComments').html('');
+				    $.each(data , function(index , row){
+				        $('.myComments').append('' +
+							'<li>\n' +
+                            '<div class="commenterImage">\n' +
+                            '<img src="'+asset+'/'+row.user_details.avatar+'" />\n' +
+                            '</div>\n' +
+                            '<div class="commentText">\n' +
+                            '<p class=""> '+row.comment+' <span class="date sub-text">'+row.created_at+'</span></p><br>\n' +
+                            '</div>\n' +
+                            '</li>\n');
+					});
+				}
+			});
+		}
+        function addComment(id , comment){
+		    $.ajax({
+				type: "post",
+				url: "{{route('add_comment')}}",
+				data: { _token: "{{csrf_token()}}" , post_id: id , comment: comment},
+				success: function(data , status){
+                    getComments();
+				}
+			});
+		}
 	</script>
 	@endsection
