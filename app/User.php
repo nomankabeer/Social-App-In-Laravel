@@ -40,7 +40,9 @@ class User extends Authenticatable
     ];
 
     public function scopegetPosts(){
-        return DB::table('post')->select('post.id' , 'title' , 'message' , 'image' , 'users.name' , 'users.avatar', 'post.created_at')->join('users' , 'post.user_id' , 'users.id')->orderBy('post.id' , 'desc')->get() ;// Post::get();
+        $ids = Follow::where('user_id' , Auth::user()->id)->pluck('follow_id');
+        $ids = $ids->prepend(Auth::user()->id);
+        return DB::table('post')->select('post.id' , 'title' , 'message' , 'image' , 'users.name' , 'users.avatar', 'post.created_at')->join('users' , 'post.user_id' , 'users.id')->whereIn('user_id' ,$ids )->orderBy('post.id' , 'desc')->get() ;// Post::get();
     }
     public function scopegetUserProfilePosts(){
         return DB::table('post')->where('user_id' , Auth::user()->id)->select('title' , 'message' , 'image' , 'users.name' , 'users.avatar', 'post.created_at')->join('users' , 'post.user_id' , 'users.id')->orderBy('post.id' , 'desc')->get() ;// Post::get();
