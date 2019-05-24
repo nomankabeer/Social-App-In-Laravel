@@ -6,12 +6,12 @@
         <li><a href="{{url('ele')}}">Elements Reference</a></li>--}}
         <li class="@if(@$page == 'profile')  active @endif"><a href="{{url('profile')}}">Profile</a></li>
         <li class="@if(@$page == 'all_users')  active @endif"><a href="{{url('all/users')}}">All Users</a></li>
-        <li ><a href="{{url('all/users')}}">Logout</a></li>
+        <li ><a href="{{route('logout')}}">Logout</a></li>
     </ul>
-    <ul class="icons">
+ {{--   <ul class="icons">
         <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
         <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
         <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
         <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-    </ul>
+    </ul>--}}
 </nav>

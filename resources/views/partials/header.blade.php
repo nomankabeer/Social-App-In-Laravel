@@ -1,17 +1,21 @@
 <div id="intro">
-    <img class="profile_image200" src="https://mdbootstrap.com/images/avatars/img%20(1).jpg" />
-    <h1>Noman Kabeer</h1>
-    <button class="btnpadding30 btn btn-info">Follow</button>
-<br>
+    <img class="profile_image200" src="{{asset('/images').'/'.Auth::user()->avatar}}" />
+    <h1>{{Auth::user()->name}}</h1>
+       <a href="{{route('add.post')}}"> <button class="btnpadding30 btn btn-info">Add Post</button></a>
+    <br>
     <ul class="flex-menu listylenone">
-        <li><strong>41</strong> posts</li>
-        <li><strong>47k</strong> followers</li>
-        <li><strong>208</strong> following</li>
+        <li><strong>{{Auth::user()->countPosts(Auth::user()->id)}}</strong> posts</li>
+        <li><strong>{{Auth::user()->getUserFollowers(Auth::user()->id)}}</strong> followers</li>
+        <li><strong>{{Auth::user()->getUserFollowing(Auth::user()->id)}}</strong> following</li>
     </ul>
     <ul class="actions">
         <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
     </ul>
 </div>
 <header id="header">
-    <a href="index.html" class="logo">Noman Kabeer</a>
+    <a href="{{route('profile')}}" class="logo">{{Auth::user()->name}}</a>
 </header>
+
+
+
+

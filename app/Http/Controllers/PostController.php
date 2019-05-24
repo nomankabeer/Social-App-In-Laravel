@@ -177,7 +177,14 @@ class PostController extends Controller
         $follow_id = $request->follow_id;
         $follow = Follow::where('user_id' , Auth::user()->id)->where('follow_id' , $follow_id);
         if($follow->first() != null && $follow->first() != ''){
-
+            Follow::where('user_id' , Auth::user()->id)->where('follow_id' , $request->follow_id)->delete();
+            return 'follow';
+        }
+        else{
+            $request = $request->all();
+            Arr::forget($request , '_token');
+            Follow::create($request);
+            return 'following';
         }
     }
 

@@ -11,30 +11,14 @@ use Illuminate\Support\Facades\DB;
 class User extends Authenticatable
 {
     use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -66,7 +50,7 @@ class User extends Authenticatable
         if(Follow::where('follow_id' , $id)->where('user_id' , Auth::user()->id)->first()){ return true; } else { return false;}
     }
     public function scopeisUserFollowMe($query , $id){
-        if(Follow::where('follow_id' , Auth::user()->id)->where('user_id' , $id)->first()){ return true; } else { return false;} //return $query->where('id' , '<>' , Auth::user()->id)->get();
+        if(Follow::where('follow_id' , Auth::user()->id)->where('user_id' , $id)->first()){ return true; } else { return false;}
     }
     public function scopegetFollowerUserList($query){
         $followers_id =  Follow::where('follow_id' , Auth::user()->id)->pluck('user_id');
