@@ -46,14 +46,10 @@ class PostController extends Controller
          $value = $request->value;
          $post_id = $request->post_id;
          $post = Likes::where('user_id' , Auth::user()->id)->where('post_id' , $post_id);
-         $message = [];
          if ($post->first() == null ){
              Likes::create(['post_id' => $post_id , 'user_id' => Auth::user()->id , 'like' => $value]);
              $total_dislike = $post->where('like' , 0)->count();
              $total_like = $post->where('like' , 1)->count();
-
-
-
              if($value == 1){
                  $like_msg = 'Liked';
                  $dislike_msg = 'Dislike This post';
@@ -186,50 +182,5 @@ class PostController extends Controller
             Follow::create($request);
             return 'following';
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
