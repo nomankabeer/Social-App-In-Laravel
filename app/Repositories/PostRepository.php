@@ -28,11 +28,11 @@ class PostRepository
         $image = $data->file('image');
         $name = $this->uploadImage($image);
         $data = $data->all();
-        Arr::forget($data , '_token');
-        Arr::forget($data , 'image');
-        $added_user_id = Arr::add( $data , 'user_id' , Auth::user()->id);
-        $added_image = Arr::add( $added_user_id, 'image' , $name);
-        Post::create($added_image);
+        unset($data['_token']);
+        unset($data['image']);
+        $data['user_id'] = Auth::user()->id;
+        $data['image'] = $name;
+        Post::create($data);
         return redirect()->route('index');
     }
      public function getPostDetail($id){
