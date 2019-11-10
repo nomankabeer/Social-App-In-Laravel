@@ -28,14 +28,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function UpdateProfile(Request $request){
-        $request = $request->all();
-        Auth::user()->name = $request['name'];
-        Auth::user()->email = $request['email'];
-        $image = $request['avatar'];
-        $name = $this->uploadImage($image);
-        Auth::user()->avatar = $name;
-        Auth::user()->save();
-        return redirect()->route('profile');
-    }
+
 }
