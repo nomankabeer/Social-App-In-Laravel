@@ -15,8 +15,8 @@
 								<p>{{$post->message}}</p>
                                 <div class="detailBox">
 									<div class="titleBox displayflex">
-										<button class=" like_msg likeButton width50 btn btn-default">Like This Post <span class=" other_like_msg badge badge-success">20 Other likes</span></button>
-										<button class=" dislike_msg dislikeButton width50 btn btn-default">Dislike This Post <span class=" other_dislike_msg badge badge-danger">20 Other DisLike</span></button>
+										<button class=" like_msg likeButton width50 btn btn-default">{{$post->like_dislike[0]}} <span class=" other_like_msg badge badge-success">{{$post->like_dislike[1]}}</span></button>
+										<button class=" dislike_msg dislikeButton width50 btn btn-default">{{$post->like_dislike[2]}} <span class=" other_dislike_msg badge badge-danger">{{$post->like_dislike[3]}}</span></button>
 									</div>
 									<div class="titleBox">
 										<label>Comment Box</label>
@@ -30,22 +30,7 @@
 											</div>
 									</div>
 									<div class="actionBox">
-										<ul class="myComments commentList">
-{{--
-											<li>
-												<div class="commenterImage">
-													<img src="http://lorempixel.com/50/50/people/9" />
-												</div>
-												<div class="commentText">
-													<p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and on Hello this is a test comment and this comment is particularly very long and it goes on and on and onHello this is a test comment.<span class="date sub-text">on March 5th, 2014</span></p>
-												</div>
-											</li>
---}}
-
-											{{--<li>
-												<button class="width100">Load Previous Comments</button>
-											</li>--}}
-										</ul>
+										<ul class="myComments commentList"> </ul>
 									</div>
 
 								</div>
