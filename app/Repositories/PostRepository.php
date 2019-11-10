@@ -17,13 +17,13 @@ class PostRepository
      *
      * @return \Illuminate\Http\Response
      */
-    public function getPosts()
-    {
+     public function getPosts()
+     {
         return Post::get();
-    }
+     }
 
-    public function storePost($data)
-    {
+     public function storePost($data)
+     {
         $image = $data->file('image');
         $name = $this->uploadImage($image);
         $data = $data->all();
@@ -33,9 +33,31 @@ class PostRepository
         $data['image'] = $name;
         Post::create($data);
         return redirect()->route('index');
-    }
+     }
      public function getPostDetail($id){
         return Post::where('id', $id)->first();
+     }
+     public function addCommentToPost($data){
+        $data = array('post_id' => $data->post_id , 'user_id' => Auth::user()->id , 'comment' => $data->comment);
+        Comment::create($data);
+        return "success";
+     }
+     public function getPostComments($id){
+        return Comment::where('post_id' , $id)->orderBy('id' , 'desc')->get();
+     }
+     public function followThisUser($data){
+        $follow_id = $data->follow_id;
+        $follow = Follow::where('user_id' , Auth::user()->id)->where('follow_id' , $follow_id);
+        if($follow->first() != null && $follow->first() != ''){
+            Follow::where('user_id' , Auth::user()->id)->where('follow_id' , $data->follow_id)->delete();
+            return 'follow';
+        }
+        else{
+            $data = $data->all();
+            unset($data['_token']);
+            Follow::create($data);
+            return 'following';
+        }
      }
      public function likeOrDislikePost($data){
 
@@ -156,27 +178,4 @@ class PostRepository
          }
 
      }
-
-     public function addCommentToPost($data){
-        $data = array('post_id' => $data->post_id , 'user_id' => Auth::user()->id , 'comment' => $data->comment);
-        Comment::create($data);
-        return "success";
-     }
-    public function getPostComments($id){
-        return Comment::where('post_id' , $id)->orderBy('id' , 'desc')->get();
-    }
-    public function followThisUser($data){
-        $follow_id = $data->follow_id;
-        $follow = Follow::where('user_id' , Auth::user()->id)->where('follow_id' , $follow_id);
-        if($follow->first() != null && $follow->first() != ''){
-            Follow::where('user_id' , Auth::user()->id)->where('follow_id' , $data->follow_id)->delete();
-            return 'follow';
-        }
-        else{
-            $data = $data->all();
-            unset($data['_token']);
-            Follow::create($data);
-            return 'following';
-        }
-    }
 }
