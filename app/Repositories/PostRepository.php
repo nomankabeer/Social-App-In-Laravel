@@ -6,7 +6,6 @@ use App\Comment;
 use App\Follow;
 use App\Likes;
 use App\Post;
-use Illuminate\Support\Arr;
 use App\Http\Controllers\Traits\UploadImage;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +37,7 @@ class PostRepository
      public function getPostDetail($id){
         return Post::where('id', $id)->first();
      }
-     public function LikeDislikePost($data){
+     public function likeOrDislikePost($data){
 
          $value = $data->value;
          $post_id = $data->post_id;
@@ -159,13 +158,13 @@ class PostRepository
      }
 
      public function addCommentToPost($data){
-        Comment::create(['post_id' => $data->post_id , 'user_id' => Auth::user()->id , 'comment' => $data->comment]);
+        $data = array('post_id' => $data->post_id , 'user_id' => Auth::user()->id , 'comment' => $data->comment);
+        Comment::create($data);
         return "success";
      }
     public function getPostComments($id){
         return Comment::where('post_id' , $id)->orderBy('id' , 'desc')->get();
     }
-
     public function followThisUser($data){
         $follow_id = $data->follow_id;
         $follow = Follow::where('user_id' , Auth::user()->id)->where('follow_id' , $follow_id);
@@ -175,7 +174,7 @@ class PostRepository
         }
         else{
             $data = $data->all();
-            Arr::forget($data , '_token');
+            unset($data['_token']);
             Follow::create($data);
             return 'following';
         }
